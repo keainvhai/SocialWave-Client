@@ -12,7 +12,7 @@ function CreatePost() {
     title: "",
     postText: "",
   };
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     if (!localStorage.getItem("accessToken")) {
       navigate("/login");

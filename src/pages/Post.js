@@ -22,6 +22,7 @@ function Post() {
   let navigate = useNavigate();
 
   // Fetch post details when component mounts
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
       setPostObject(response.data);

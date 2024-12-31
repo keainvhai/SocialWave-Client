@@ -17,6 +17,7 @@ function Home() {
 
   let navigate = useNavigate();
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // 使用 authState.status 检查登录状态
     if (!localStorage.getItem("accessToken")) {

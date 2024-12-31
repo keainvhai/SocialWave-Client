@@ -11,6 +11,7 @@ function Profile() {
   let navigate = useNavigate();
   const { authState } = useContext(AuthContext);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     axios.get(`http://localhost:3001/auth/basicinfo/${id}`).then((response) => {
       setUsername(response.data.username);

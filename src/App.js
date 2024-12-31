@@ -20,6 +20,7 @@ function App() {
   });
 
   //check if user is loged in
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     axios
       .get("http://localhost:3001/auth/auth", {
