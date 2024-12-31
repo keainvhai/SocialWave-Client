@@ -65,7 +65,7 @@ function Home() {
         if (likedPosts.includes(postId)) {
           setLikedPosts(
             likedPosts.filter((id) => {
-              return id != postId;
+              return id !== postId;
             })
           );
         } else {
