@@ -23,7 +23,7 @@ function App() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     axios
-      .get("http://localhost:3001/auth/auth", {
+      .get("https://social-wave-api-fei-2ff147133f84.herokuapp.com/auth/auth", {
         headers: { accessToken: localStorage.getItem("accessToken") },
       })
       .then((respose) => {

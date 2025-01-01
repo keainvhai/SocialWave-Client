@@ -8,7 +8,7 @@ function ChangePassword() {
   const changepassword = () => {
     axios
       .put(
-        "http://localhost:3001/auth/changepassword",
+        "https://social-wave-api-fei-2ff147133f84.herokuapp.com/auth/changepassword",
         {
           oldPassword: oldPassword,
           newPassword: newPassword,

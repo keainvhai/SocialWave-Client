@@ -25,7 +25,7 @@ function Home() {
       navigate("/login");
     } else {
       axios
-        .get("http://localhost:3001/posts", {
+        .get("https://social-wave-api-fei-2ff147133f84.herokuapp.com/posts", {
           headers: { accessToken: localStorage.getItem("accessToken") },
         })
         .then((response) => {
@@ -42,7 +42,7 @@ function Home() {
   const likeAPOst = (postId) => {
     axios
       .post(
-        "http://localhost:3001/likes",
+        "https://social-wave-api-fei-2ff147133f84.herokuapp.com/likes",
         { PostId: postId },
         { headers: { accessToken: localStorage.getItem("accessToken") } }
       )

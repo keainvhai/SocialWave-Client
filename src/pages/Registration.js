@@ -15,9 +15,11 @@ function Registration() {
   });
 
   const onSubmit = (data) => {
-    axios.post("http://localhost:3001/auth", data).then(() => {
-      console.log(data);
-    });
+    axios
+      .post("https://social-wave-api-fei-2ff147133f84.herokuapp.com/auth", data)
+      .then(() => {
+        console.log(data);
+      });
   };
 
   return (

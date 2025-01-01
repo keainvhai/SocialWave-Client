@@ -24,20 +24,28 @@ function Post() {
   // Fetch post details when component mounts
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
-    axios.get(`http://localhost:3001/posts/byId/${id}`).then((response) => {
-      setPostObject(response.data);
-    });
+    axios
+      .get(
+        `https://social-wave-api-fei-2ff147133f84.herokuapp.com/posts/byId/${id}`
+      )
+      .then((response) => {
+        setPostObject(response.data);
+      });
 
     // Fetch comments for the post
-    axios.get(`http://localhost:3001/comments/${id}`).then((response) => {
-      setComments(response.data);
-    });
+    axios
+      .get(
+        `https://social-wave-api-fei-2ff147133f84.herokuapp.com/comments/${id}`
+      )
+      .then((response) => {
+        setComments(response.data);
+      });
   }, []);
 
   const addComment = () => {
     axios
       .post(
-        "http://localhost:3001/comments",
+        "https://social-wave-api-fei-2ff147133f84.herokuapp.com/comments",
         {
           commentBody: newComment,
           PostId: id,
@@ -64,9 +72,12 @@ function Post() {
 
   const deleteComment = (id) => {
     axios
-      .delete(`http://localhost:3001/comments/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        `https://social-wave-api-fei-2ff147133f84.herokuapp.com/comments/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         setComments(
           comments.filter((val) => {
@@ -78,9 +89,12 @@ function Post() {
 
   const deletePost = (id) => {
     axios
-      .delete(`http://localhost:3001/posts/${id}`, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .delete(
+        `https://social-wave-api-fei-2ff147133f84.herokuapp.com/posts/${id}`,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then(() => {
         navigate("/");
       });
@@ -92,7 +106,7 @@ function Post() {
       //prompt(message, defaultValue) -> returns user input or null if cancelled
       let newTitle = prompt("Enter New Title:");
       axios.put(
-        "http://localhost:3001/posts/title",
+        "https://social-wave-api-fei-2ff147133f84.herokuapp.com/posts/title",
         {
           newTitle: newTitle,
           id: id,
@@ -108,7 +122,7 @@ function Post() {
     } else {
       let newPostText = prompt("Enter New Text:");
       axios.put(
-        "http://localhost:3001/posts/postText",
+        "https://social-wave-api-fei-2ff147133f84.herokuapp.com/posts/postText",
         {
           newText: newPostText,
           id: id,

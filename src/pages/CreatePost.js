@@ -27,9 +27,13 @@ function CreatePost() {
   //cause we remove the username field ,so we need to send username to data
   const onSubmit = (data) => {
     axios
-      .post("http://localhost:3001/posts", data, {
-        headers: { accessToken: localStorage.getItem("accessToken") },
-      })
+      .post(
+        "https://social-wave-api-fei-2ff147133f84.herokuapp.com/posts",
+        data,
+        {
+          headers: { accessToken: localStorage.getItem("accessToken") },
+        }
+      )
       .then((response) => {
         navigate("/");
       });
