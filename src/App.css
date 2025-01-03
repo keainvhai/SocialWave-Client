@@ -1,3 +1,10 @@
+:root {
+  --primary-purple: #bb92f4; /* 主紫色，替换原来的 dodgerblue */
+  --light-purple: #b98aff; /* 浅紫色，用于悬停效果 */
+  --dark-purple: #7132d1; /* 深紫色，用于边框 */
+  --bg-purple: #f3effa; /* 背景色 */
+}
+
 .App {
   width: 100%;
   height: auto;
@@ -9,6 +16,7 @@
 body {
   margin: 0;
   padding: 0;
+  background-color: var(--bg-purple);
 }
 
 .post {
@@ -20,18 +28,19 @@ body {
   margin-top: 50px;
   border: 1px solid lightgray;
   font-family: Arial, Helvetica, sans-serif;
-
-  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 4px 6px rgba(149, 81, 246, 0.1);
 }
 
 .post:hover {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transform: translateY(-5px);
   cursor: pointer;
 }
 .post .title {
   flex: 20%;
   border-bottom: 1px solid lightgray;
-  background-color: dodgerblue;
+  background-color: var(--primary-purple);
   display: grid;
   place-content: center;
   color: white;
@@ -41,42 +50,101 @@ body {
   flex: 60%;
   display: grid;
   place-content: center;
+  background-color: white;
 }
 
 .post .footer {
   flex: 20%;
   border-top: 1px solid lightgray;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   padding-left: 15px;
-  background-color: dodgerblue;
+  background-color: var(--primary-purple);
   color: white;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
 }
-
-.footer .username {
-  flex: 50%;
+.post .footer username {
+  font-weight: 500;
+  font-size: 16px;
 }
-.footer .buttons {
-  flex: 50%;
+.post .footer button {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-}
-
-.likeBttn {
-  color: rgba(57, 55, 55, 0.8);
-}
-.unlikeBttn {
+  gap: 15px;
   color: white;
+  height: 40px;
+  width: 100px;
+  font-size: 1rem;
+  background-color: var(--dark-purple);
+}
+/* 点赞按钮样式 */
+/* .likeBttn {
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px; /* 图标和文字之间的间距 */
+/* height: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  transition: opacity 0.2s ease;
+}  */
+
+/* .likeBttn:hover {
+  opacity: 0.8;
+} */
+
+/* 点赞数量 */
+/* .buttons label {
+  margin-right: 1rem;
+  color: white;
+  font-size: 16px;
+  height: 100%;
+} */
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 24px; /* 设置固定高度 */
 }
 
+/* 点赞图标样式 */
+.likeBttn {
+  color: rgb(215, 212, 212);
+  cursor: pointer;
+  width: 24px !important; /* 强制设置宽度 */
+  height: 24px !important; /* 强制设置高度 */
+  padding: 0;
+  transition: transform 0.2s ease;
+}
+
+.likeBttn:hover {
+  transform: scale(1.1); /* 悬停时放大效果 */
+}
+
+/* 已点赞状态 */
+.unlikeBttn {
+  color: rgb(251, 251, 251);
+  cursor: pointer;
+  width: 24px !important;
+  height: 24px !important;
+  padding: 0;
+  transform: scale(1.1); /* 已点赞时稍微放大 */
+}
+
+/* 数字标签 */
 .buttons label {
-  margin-right: 20px;
-  margin-left: 10px;
+  color: white;
+  font-size: 16px;
+  line-height: 24px; /* 与图标高度一致 */
+  display: flex;
+  align-items: center;
+  margin-right: 1rem;
 }
-
 /* CREATE POST PAGE CSS */
 
 .createPostPage {
@@ -94,8 +162,13 @@ body {
   width: 500px;
   height: auto;
   padding: 20px;
-  border: 5px solid dodgerblue;
-  border-radius: 5px;
+  border: 2px dotted var(--primary-purple);
+  border-radius: 15px; /* 更大的圆角 */
+  box-shadow: 0 4px 12px rgba(149, 81, 246, 0.1);
+}
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(149, 81, 246, 0.2); /* 紫色光晕效果 */
 }
 
 .formContainer #inputCreatePost {
@@ -112,14 +185,14 @@ body {
   margin-top: 15px;
   height: 40px;
   border: none;
-  background-color: lightskyblue;
+  background-color: var(--primary-purple);
   border-radius: 5px;
   color: white;
 }
 
 .formContainer button:hover {
   cursor: pointer;
-  background-color: dodgerblue;
+  background-color: var(--light-purple);
 }
 
 span {
@@ -131,7 +204,8 @@ span {
 .navbar {
   width: 100%;
   height: 70px;
-  background-color: dodgerblue;
+  background-color: var(--primary-purple);
+  box-shadow: 0 2px 4px rgba(149, 81, 246, 0.2);
   display: flex;
   align-items: center;
   font-family: Arial, Helvetica, sans-serif;
@@ -157,11 +231,17 @@ span {
 }
 
 .navbar button {
-  width: 100px;
+  width: 70px;
   height: 40px;
   cursor: pointer;
   margin-right: 10px;
   background-color: white;
+  color: var(--primary-purple);
+  font-weight: bold;
+  transition: background-color 0.2s ease;
+}
+.navbar button:hover {
+  background-color: var(--bg-purple); /* 悬停时变为浅紫色 */
 }
 
 .navbar h1 {
@@ -181,14 +261,14 @@ span {
 
 .leftSide {
   flex: 50%;
-  height: calc(100vh - 70px);
+  /* height: calc(100vh - 70px); */
   display: grid;
   place-items: center;
 }
 
 .rightSide {
   flex: 50%;
-  height: calc(100vh - 70px);
+  /* height: calc(100vh - 70px); */
   display: grid;
   place-items: center;
   display: flex;
@@ -199,25 +279,35 @@ span {
   flex: 20%;
   width: 100%;
   display: grid;
+  grid-template-columns: 3fr 1fr;
   place-items: center;
   margin-top: 25px;
+  gap: 20px;
 }
 
 .addCommentContainer input,
 button {
-  width: 200px;
   height: 50px;
   border-radius: 8px;
   border: none;
 }
 
 .addCommentContainer button {
-  background-color: dodgerblue;
+  grid-column: 2;
+  background-color: var(--primary-purple);
   color: white;
+  width: 100%;
+  margin-right: 1rem;
+}
+.addCommentContainer button:hover {
+  background-color: var(--light-purple);
 }
 
 .addCommentContainer input {
-  border: 2px solid dodgerblue;
+  grid-column: 1;
+  margin-left: 1rem;
+  border: 2px solid var(--primary-purple);
+  width: 100%;
 }
 
 .rightSide .listOfComments {
@@ -226,15 +316,50 @@ button {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  overflow-y: auto;
 }
 
 .listOfComments .comment {
   width: 70%;
-  height: auto;
-  padding: 30px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  margin-top: 20px;
+  padding: 20px;
+  background: white;
+  border: none;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 5px rgba(149, 81, 246, 0.1);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+}
+.comment:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(149, 81, 246, 0.2);
+}
+
+.comment button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: none;
+  border: none;
+  color: #999;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.comment button:hover {
+  background-color: rgba(187, 146, 244, 0.1);
+  color: var(--primary-purple);
 }
 
 #individual {
@@ -272,10 +397,52 @@ button {
 }
 
 .loginContainer button {
-  background-color: dodgerblue;
+  background-color: var(--primary-purple);
   color: white;
 }
 
 .loginContainer input {
-  border: 2px solid dodgerblue;
+  border: 2px solid var(--primary-purple);
+}
+
+@media screen and (max-width: 60rem) {
+  .postPage {
+    flex-direction: column; /* 改为垂直布局 */
+    align-items: center;
+  }
+
+  .leftSide,
+  .rightSide {
+    flex: 100%; /* 占满宽度 */
+    width: 100%;
+    height: auto; /* 高度自适应 */
+    min-height: 50vh; /* 最小高度 */
+  }
+
+  #individual {
+    width: 90%;
+    margin: 20px 0;
+  }
+
+  .rightSide .addCommentContainer {
+    padding: 0 20px;
+    margin: 20px 0;
+  }
+  .rightSide {
+    width: 90%;
+  }
+
+  .listOfComments .comment {
+    width: 90%; /* 评论宽度调整 */
+  }
+
+  /* 调整字体大小 */
+  #individual .title,
+  #individual .footer {
+    font-size: 24px;
+  }
+
+  #individual .body {
+    font-size: 20px;
+  }
 }
